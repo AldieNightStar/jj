@@ -17,6 +17,7 @@ public class Scope {
     public Stack errors;
     public Stack callStack;
     public boolean flag;
+    public Value[] mem = new Value[1000];
 
     public void pushError(String err) {
         this.errors.push(new Value(err));

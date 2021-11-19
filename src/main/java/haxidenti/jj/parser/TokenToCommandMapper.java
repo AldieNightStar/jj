@@ -20,6 +20,8 @@ public class TokenToCommandMapper {
             return new PushCommand(new Value(token.value));
         } else if (token.type == Type.FLAG_CALL) { // FLAG_CALL
             return new FlagCommand(new CallCommand(token.value));
+        } else if (token.type == Type.COMMENT) { // COMMENT
+            return null; // Comments will be ignored
         }
         return null;
     }

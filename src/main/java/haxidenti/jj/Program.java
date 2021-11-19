@@ -83,7 +83,6 @@ public class Program {
         scope.commands.put("str", new StrCommand());
         scope.commands.put("num", new NumCommand());
         scope.commands.put("concat", new ConcatCommand());
-        scope.commands.put("format", new ConcatCommand());
 
         // Working with lists
         scope.commands.put("append", new AppendCommand());
@@ -124,6 +123,10 @@ public class Program {
         scope.commands.put(">=", new CompareCommand((a, b) -> a.getNumber() >= b.getNumber()));
         scope.commands.put("negate", new NegateCommand());
         scope.commands.put("dropFlag", s -> s.flag = false);
+
+        // Memory
+        scope.commands.put("set", new SetCommand());
+        scope.commands.put("get", new GetCommand());
 
         return scope;
     }

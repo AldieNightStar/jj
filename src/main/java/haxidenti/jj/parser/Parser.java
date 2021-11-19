@@ -5,6 +5,7 @@ import haxidenti.jj.parser.Token.Type;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Parser {
@@ -22,6 +23,12 @@ public class Parser {
                 tokens.add(stringTok);
                 continue;
             }
+            Token commentTok = parseComment(text.substring(pos));
+            if (commentTok != null) {
+                pos += commentTok.size;
+                tokens.add(commentTok);
+                continue;
+            }
             Token etcTok = parseEtc(text.substring(pos));
             if (etcTok != null) {
                 pos += etcTok.size;
@@ -37,6 +44,7 @@ public class Parser {
     public static List<Command> toCode(List<Token> tokens) {
         return tokens.stream()
                 .map(TokenToCommandMapper::map)
+                .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
 
@@ -115,5 +123,19 @@ public class Parser {
         }
 
         return new Token(etc, size, Type.CALL);
+    }
+
+    public static Token parseComment(String text) {
+        if (!text.startsWith("//")) {
+            return null;
+        }
+        char[] ch = text.toCharArray();
+        for (int i = 0; i < ch.length; i++) {
+            char c = ch[i];
+            if (c == '\n' || c == '\r') {
+                return new Token((String) null, i + 2, Type.COMMENT);
+            }
+        }
+        return null;
     }
 }

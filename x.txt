@@ -1,4 +1,44 @@
-'a' 0 append
-'x' swap append
-'y' swap append
- println
+'setI' declare
+'setJ' declare
+'getI' declare
+'getJ' declare
+'genInc' declare
+'genCnt' declare
+
+// Count (General)
+0 0 set
+
+// Count for :i
+1000 setI
+
+// Count for :j
+1000 setJ
+
+:i
+    // Decrement :i count
+    getI 1 sub setI
+    // When :i count == 0 then goto :end
+    getI 0 == 'end' ?goto
+    getI str println
+
+    :j
+        // Increment general count
+        genInc
+        // Decrement :j count
+        getJ 1 sub setJ
+        // When :j count > 0, goto :j
+        getJ 0 > 'j' ?goto
+        // Set :j to 1000 again
+        1000 setJ
+        'i' goto
+
+:setI 1 set ret
+:setJ 2 set ret
+:getI 1 get ret
+:getJ 2 get ret
+:genInc 0 get 1 add 0 set ret
+:genCnt 0 get ret
+
+
+:end
+    "Done!" println

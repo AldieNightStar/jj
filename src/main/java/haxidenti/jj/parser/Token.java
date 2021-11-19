@@ -19,6 +19,6 @@ public class Token {
     }
 
     enum Type {
-        STRING, LABEL, CALL, NUM, FLAG_CALL
+        STRING, LABEL, CALL, NUM, FLAG_CALL, COMMENT
     }
 }
