@@ -51,4 +51,12 @@ public class Value {
         }
         return values.size();
     }
+
+    public Value copy() {
+        Value val = new Value((String) null);
+        val.number = number;
+        val.str = str;
+        val.values = values;
+        return val;
+    }
 }

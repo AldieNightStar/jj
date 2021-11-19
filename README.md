@@ -48,7 +48,7 @@ drop
 * List related stuff
 ```
 // Append element to a value
-1 append
+elem arr append
 
 // Get's element at a position of a list
 // Pushes array and element value to a stack

@@ -16,7 +16,7 @@ public class DuplicateCommand implements Command {
     public void run(Scope scope) {
         Value v = scope.stack.pop();
         for (int i = 0; i < times; i++) {
-            scope.stack.push(v);
+            scope.stack.push(v.copy());
         }
     }
 }
