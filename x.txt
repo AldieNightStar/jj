@@ -1,44 +1,26 @@
-'setI' declare
-'setJ' declare
-'getI' declare
-'getJ' declare
-'genInc' declare
-'genCnt' declare
+'ask' declare
+'setOp' 'getOp' declare declare
+'setNum' 'getNum' declare declare
+'main' goto
 
-// Count (General)
-0 0 set
+:ask
+    print
+    input
+    ret
 
-// Count for :i
-1000 setI
+:setOp 1 set ret
+:getOp 1 get ret
+:setNum 10 add set ret
+:getNum 10 add get ret
 
-// Count for :j
-1000 setJ
+:main
+    "Enter the number 1: " ask
+    "Enter the number 2: " ask
+    "Enter the op (+, -, *, /): " ask
+    setOp 1 setNum 2 setNum
 
-:i
-    // Decrement :i count
-    getI 1 sub setI
-    // When :i count == 0 then goto :end
-    getI 0 == 'end' ?goto
-    getI str println
-
-    :j
-        // Increment general count
-        genInc
-        // Decrement :j count
-        getJ 1 sub setJ
-        // When :j count > 0, goto :j
-        getJ 0 > 'j' ?goto
-        // Set :j to 1000 again
-        1000 setJ
-        'i' goto
-
-:setI 1 set ret
-:setJ 2 set ret
-:getI 1 get ret
-:getJ 2 get ret
-:genInc 0 get 1 add 0 set ret
-:genCnt 0 get ret
-
-
-:end
-    "Done!" println
+    1 getNum println
+    2 getNum println
+    1 getNum println
+    2 getNum println
+    getOp println

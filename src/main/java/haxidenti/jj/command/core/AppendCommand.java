@@ -9,6 +9,5 @@ public class AppendCommand implements Command {
     public void run(Scope scope) {
         Value arr = scope.stack.pop();
         arr.add(scope.stack.pop());
-        scope.stack.push(arr);
     }
 }

@@ -16,7 +16,6 @@ public class AtCommand implements Command {
         }
         Value valInArr = arr.get(index.getNumber().intValue());
 
-        scope.stack.push(arr);
         scope.stack.push(valInArr);
     }
 }
