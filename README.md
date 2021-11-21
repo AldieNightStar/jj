@@ -74,9 +74,6 @@ id arr at
 // Locate label with some name and pushes index to stack
 'main' loc
 
-// Pushes to a stack value of current program pointer (execution position)
-here
-
 // Call some label and return back with 'ret' command
 'main' call 
 34 call
