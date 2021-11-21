@@ -87,17 +87,6 @@ ret
 // Declare label as a new function
 'main' declare
 ```
-* Temp value
-```
-// Remember some value
-10 remember
-
-// Forget
-forget
-
-// Get remembered value
-remind
-```
 * Errors
 ```
 // Push new error
@@ -115,7 +104,7 @@ dropError
 // Counts how many errors we have
 errorCount
 ```
-* Logic
+* Logic (Flag)
 ```
 // Number Equals
 10 20 ==
@@ -139,4 +128,18 @@ val id set
 
 // Get something from a memory
 id get
+```
+* Increment / Decrement
+```
+// Increment
+1 inc
+1 2inc
+1 3inc
+1 4inc
+
+// Decrement
+1 dec
+1 2dec
+1 3dec
+1 4dec
 ```

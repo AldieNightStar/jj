@@ -24,4 +24,11 @@ public class ValueUtil {
             return id.intValue();
         }
     }
+
+    public static Float getNumber(Value value) {
+        if (value == null) {
+            return null;
+        }
+        return value.getNumber();
+    }
 }

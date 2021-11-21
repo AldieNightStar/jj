@@ -2,6 +2,7 @@ package haxidenti.jj;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static haxidenti.jj.util.ListUtil.at;
 
@@ -58,5 +59,17 @@ public class Value {
         val.str = str;
         val.values = values;
         return val;
+    }
+
+    public boolean equals(Value v) {
+        String s = getString();
+        if (s == null) {
+            Float num = getNumber();
+            if (num == null) {
+                return false;
+            }
+            return Objects.equals(v.getNumber(), num);
+        }
+        return Objects.equals(v.getString(), s);
     }
 }

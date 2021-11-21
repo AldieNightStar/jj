@@ -95,18 +95,22 @@ public class Program {
         scope.commands.put("mul", new MathCommand((a, b) -> a * b));
         scope.commands.put("mod", new MathCommand((a, b) -> (float) (a.intValue() % b.intValue())));
 
+        // Inc / Dec
+        scope.commands.put("inc", new ModifyNumberCommand(n -> n + 1));
+        scope.commands.put("2inc", new ModifyNumberCommand(n -> n + 2));
+        scope.commands.put("3inc", new ModifyNumberCommand(n -> n + 3));
+        scope.commands.put("4inc", new ModifyNumberCommand(n -> n + 4));
+        scope.commands.put("dec", new ModifyNumberCommand(n -> n - 1));
+        scope.commands.put("2dec", new ModifyNumberCommand(n -> n - 2));
+        scope.commands.put("3dec", new ModifyNumberCommand(n -> n - 3));
+        scope.commands.put("4dec", new ModifyNumberCommand(n -> n - 4));
+
         // GOTO
         scope.commands.put("goto", new GotoCommand());
         scope.commands.put("loc", new LocCommand());
-        scope.commands.put("here", s -> s.stack.push(new Value(s.programPointer + 1)));
         scope.commands.put("call", new GotoCallCommand());
         scope.commands.put("ret", new ReturnCommand());
         scope.commands.put("declare", new DeclareCommand());
-
-        // Remember / Forget
-        scope.commands.put("remember", new RememberCommand(false));
-        scope.commands.put("forget", new RememberCommand(true));
-        scope.commands.put("remind", new RemindCommand());
 
         // Errors
         scope.commands.put("newError", s -> s.errors.push(s.stack.pop()));
@@ -116,11 +120,12 @@ public class Program {
         scope.commands.put("errorCount", s -> s.stack.push(new Value(s.errors.ptr)));
 
         // Logic
-        scope.commands.put("==", new CompareCommand((a, b) -> Objects.equals(a.getNumber(), b.getNumber())));
-        scope.commands.put("<", new CompareCommand((a, b) -> a.getNumber() < b.getNumber()));
-        scope.commands.put(">", new CompareCommand((a, b) -> a.getNumber() > b.getNumber()));
-        scope.commands.put("<=", new CompareCommand((a, b) -> a.getNumber() <= b.getNumber()));
-        scope.commands.put(">=", new CompareCommand((a, b) -> a.getNumber() >= b.getNumber()));
+        scope.commands.put("==", new EqualsCommand());
+        scope.commands.put("<", new CompareNumberCommand((a, b) -> a < b));
+        scope.commands.put(">", new CompareNumberCommand((a, b) -> a > b));
+        scope.commands.put("<=", new CompareNumberCommand((a, b) -> a <= b));
+        scope.commands.put(">=", new CompareNumberCommand((a, b) -> a >= b));
+
         scope.commands.put("negate", new NegateCommand());
         scope.commands.put("dropFlag", s -> s.flag = false);
 
