@@ -5,7 +5,9 @@ import haxidenti.jj.command.Command;
 import haxidenti.jj.command.core.CallCommand;
 import haxidenti.jj.command.core.FlagCommand;
 import haxidenti.jj.command.core.LabelCommand;
-import haxidenti.jj.command.core.PushCommand;
+import haxidenti.jj.command.hardcoded.GetVarCommand;
+import haxidenti.jj.command.hardcoded.PushCommand;
+import haxidenti.jj.command.hardcoded.SetVarCommand;
 import haxidenti.jj.parser.Token.Type;
 
 public class TokenToCommandMapper {
@@ -22,6 +24,10 @@ public class TokenToCommandMapper {
             return new FlagCommand(new CallCommand(token.value));
         } else if (token.type == Type.COMMENT) { // COMMENT
             return null; // Comments will be ignored
+        } else if (token.type == Type.GETVAR) {
+            return new GetVarCommand(token.number.intValue());
+        } else if (token.type == Type.SETVAR) {
+            return new SetVarCommand(token.number.intValue());
         }
         return null;
     }

@@ -10,7 +10,11 @@ public class ValueUtil {
         }
         String s = val.getString();
         if (s != null) {
-            Integer id = scope.labels.get(s);
+            Integer id;
+            if (s.equals("start")) {
+                return scope.loopPointer;
+            }
+            id = scope.labels.get(s);
             if (id != null) {
                 return id;
             } else {

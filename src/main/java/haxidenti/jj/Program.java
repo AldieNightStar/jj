@@ -133,6 +133,10 @@ public class Program {
         scope.commands.put("set", new SetCommand());
         scope.commands.put("get", new GetCommand());
 
+        // Loop Pointer
+        scope.commands.put("start", s -> s.loopPointer = s.programPointer + 1);
+        scope.commands.put("loop", new LoopCommand());
+
         return scope;
     }
 

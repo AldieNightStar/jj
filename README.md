@@ -102,6 +102,9 @@ dropError
 errorCount
 ```
 * Logic (Flag)
+  * When flag is active - `?command` will work
+    * Any command with prefix `?` will run IF flag is active
+  * Flag can be activated when next commands return truth (Not to stack)
 ```
 // Number Equals
 10 20 ==
@@ -118,6 +121,11 @@ negate
 // Drop logic flag
 dropFlag
 ```
+* Logic flag sample
+```
+$25 $26 ==
+    "value 25 and 26 are equal" ?println
+```
 * Memory
 ```
 // Set something to a memory
@@ -125,6 +133,17 @@ val id set
 
 // Get something from a memory
 id get
+
+// ===================
+// ALTERNATIVE WAY
+// ===================
+
+// Set value to 0
+val $$0
+
+// Get value from 0
+$0
+
 ```
 * Increment / Decrement
 ```
@@ -139,4 +158,17 @@ id get
 1 2dec
 1 3dec
 1 4dec
+```
+* Loop
+```
+// Start point
+start
+
+// Loop until number is < 1
+10 loop
+
+// Sample
+start
+    0 get dec 0 set
+    0 get loop
 ```

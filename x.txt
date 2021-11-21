@@ -1,1 +1,7 @@
-'aaa' 'aaa' == "OK" ?println
+100 $$0
+200 $$1
+
+$0 println
+$0 println
+$1 println
+$1 println

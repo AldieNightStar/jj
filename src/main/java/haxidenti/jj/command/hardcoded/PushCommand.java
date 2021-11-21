@@ -1,4 +1,4 @@
-package haxidenti.jj.command.core;
+package haxidenti.jj.command.hardcoded;
 
 import haxidenti.jj.Scope;
 import haxidenti.jj.Value;

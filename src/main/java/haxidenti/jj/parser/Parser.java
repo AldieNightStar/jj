@@ -111,9 +111,12 @@ public class Parser {
 
         if (etc.startsWith(":")) {
             return new Token(etc.substring(1), size, Type.LABEL);
-        }
-        if (etc.startsWith("?")) {
+        } else if (etc.startsWith("?")) {
             return new Token(etc.substring(1), size, Type.FLAG_CALL);
+        } else if (etc.startsWith("$$")) {
+            return new Token((float) Integer.parseInt(etc.substring(2)), size, Type.SETVAR);
+        } else if (etc.startsWith("$")) {
+            return new Token((float) Integer.parseInt(etc.substring(1)), size, Type.GETVAR);
         }
 
         try {

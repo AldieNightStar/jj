@@ -8,6 +8,7 @@ import java.util.Map;
 public class Scope {
     public Stack stack;
     public int programPointer;
+    public Integer loopPointer;
     public List<Command> code;
     public Map<String, Command> commands;
     public Map<String, Integer> labels;
