@@ -47,11 +47,17 @@ drop
 ```
 * List related stuff
 ```
+
+// Create array example
+0 $$a
+100 $a append
+200 $a append
+300 $a append
+
 // Append element to a value
 elem arr append
 
 // Get's element at a position of a list
-// Pushes array and element value to a stack
 id arr at
 ```
 * Math

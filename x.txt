@@ -1,14 +1,11 @@
-100 $$a
+0 $$a
 
-$-a str println
-$-a str println
-$-a str println
-$-a str println
-$-a str println
-$-a str println
-$-a str println
-$-a str println
-$-a str println
-$-a str println
-$-a str println
-$-a str println
+0 $a append
+1 $a append
+2 $a append
+3 $a append
+99 $a append
+100 $a append
+122 $a append
+
+4 $a at str println
