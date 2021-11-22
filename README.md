@@ -104,6 +104,7 @@ errorCount
 * Logic (Flag)
   * When flag is active - `?command` will work
     * Any command with prefix `?` will run IF flag is active
+    * Any command with prefix `??` will run IF flag is inactive
   * Flag can be activated when next commands return truth (Not to stack)
 ```
 // Number Equals
@@ -125,6 +126,19 @@ dropFlag
 ```
 $25 $26 ==
     "value 25 and 26 are equal" ?println
+
+// Another sample
+30 $$0
+
+$0 10 ==
+    333 str ?println
+    ??drop
+$0 20 ==
+    444 str ?println
+    ??drop
+$0 30 ==
+    555 str ?println
+    ??drop
 ```
 * Memory
 ```
@@ -143,6 +157,16 @@ val $$0
 
 // Get value from 0
 $0
+
+// ===================
+// GET AND INC/SUB
+// ===================
+
+// Returns $a and then decrease
+$-a
+
+// Returns $a and then increase
+$+a
 
 ```
 * Increment / Decrement

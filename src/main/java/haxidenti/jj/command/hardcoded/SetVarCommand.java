@@ -6,14 +6,14 @@ import haxidenti.jj.command.Command;
 
 public class SetVarCommand implements Command {
 
-    private int n;
+    private String valName;
 
-    public SetVarCommand(int n) {
-        this.n = n;
+    public SetVarCommand(String valName) {
+        this.valName = valName;
     }
 
     @Override
     public void run(Scope scope) {
-        scope.mem[n] = scope.stack.pop();
+        scope.mem.put(valName, scope.stack.pop());
     }
 }

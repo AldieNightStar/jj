@@ -111,12 +111,18 @@ public class Parser {
 
         if (etc.startsWith(":")) {
             return new Token(etc.substring(1), size, Type.LABEL);
+        } else if (etc.startsWith("??")) {
+            return new Token(etc.substring(2), size, Type.FLAG_INACTIVE_CALL);
         } else if (etc.startsWith("?")) {
             return new Token(etc.substring(1), size, Type.FLAG_CALL);
+        } else if (etc.startsWith("$-")) {
+            return new Token(etc.substring(2), size, Type.DEC_VAR);
+        } else if (etc.startsWith("$+")) {
+            return new Token(etc.substring(2), size, Type.INC_VAR);
         } else if (etc.startsWith("$$")) {
-            return new Token((float) Integer.parseInt(etc.substring(2)), size, Type.SETVAR);
+            return new Token(etc.substring(2), size, Type.SETVAR);
         } else if (etc.startsWith("$")) {
-            return new Token((float) Integer.parseInt(etc.substring(1)), size, Type.GETVAR);
+            return new Token(etc.substring(1), size, Type.GETVAR);
         }
 
         try {

@@ -9,15 +9,15 @@ public class SetCommand implements Command {
     public void run(Scope scope) {
         Value idVal = scope.stack.pop();
         Value toSetVal = scope.stack.pop();
-        if (idVal == null || idVal.getNumber() == null) {
+        if (idVal == null || idVal.getString() == null) {
             scope.pushError("Value for set command is null!");
             return;
         }
-        int id = idVal.getNumber().intValue();
-        if (id < 0) {
-            scope.pushError("Set cannot acess memory less than zero!");
+        String name = idVal.getString();
+        if (name.length() < 1) {
+            scope.pushError("Set cannot access memory less than zero!");
             return;
         }
-        scope.mem[id] = toSetVal;
+        scope.mem.put(name, toSetVal);
     }
 }

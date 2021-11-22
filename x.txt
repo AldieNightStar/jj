@@ -1,7 +1,14 @@
-100 $$0
-200 $$1
+100 $$a
 
-$0 println
-$0 println
-$1 println
-$1 println
+$-a str println
+$-a str println
+$-a str println
+$-a str println
+$-a str println
+$-a str println
+$-a str println
+$-a str println
+$-a str println
+$-a str println
+$-a str println
+$-a str println

@@ -5,14 +5,14 @@ import haxidenti.jj.command.Command;
 
 public class GetVarCommand implements Command {
 
-    private int n;
+    private String valName;
 
-    public GetVarCommand(int n) {
-        this.n = n;
+    public GetVarCommand(String valName) {
+        this.valName = valName;
     }
 
     @Override
     public void run(Scope scope) {
-        scope.stack.push(scope.mem[n]);
+        scope.stack.push(scope.mem.get(valName));
     }
 }

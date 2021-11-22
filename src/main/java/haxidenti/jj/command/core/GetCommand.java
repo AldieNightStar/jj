@@ -8,15 +8,15 @@ public class GetCommand implements Command {
     @Override
     public void run(Scope scope) {
         Value val = scope.stack.pop();
-        if (val == null || val.getNumber() == null) {
+        if (val == null || val.getString() == null) {
             scope.pushError("Value for set command is null!");
             return;
         }
-        int num = val.getNumber().intValue();
-        if (num < 0) {
-            scope.pushError("Set cannot acess memory less than zero!");
+        String name = val.getString();
+        if (name.length() < 1) {
+            scope.pushError("Set cannot acess memory with key which is empty");
             return;
         }
-        scope.stack.push(scope.mem[num]);
+        scope.stack.push(scope.mem.get(name));
     }
 }

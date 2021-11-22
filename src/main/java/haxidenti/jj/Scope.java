@@ -2,6 +2,7 @@ package haxidenti.jj;
 
 import haxidenti.jj.command.Command;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +19,7 @@ public class Scope {
     public Stack errors;
     public Stack callStack;
     public boolean flag;
-    public Value[] mem = new Value[1000];
+    public Map<String, Value> mem = new HashMap<>(64);
 
     public void pushError(String err) {
         this.errors.push(new Value(err));
